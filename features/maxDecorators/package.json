@@ -1,0 +1,13 @@
+{
+  "name": "maxdecorators",
+  "version": "1.0.0",
+  "description": "Learning how to use Decorators Max Udemy Course",
+  "main": "index.js",
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon dist/index.js",
+    "start": "concurrently npm:start:*"
+  },
+  "author": "Collins Kariuki",
+  "license": "ISC"
+}
