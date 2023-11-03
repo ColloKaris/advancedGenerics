@@ -1,0 +1,14 @@
+{
+  "name": "features",
+  "version": "1.0.0",
+  "description": "Some Cool TS Features",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Collins Kariuki",
+  "license": "ISC",
+  "dependencies": {
+    "reflect-metadata": "^0.1.13"
+  }
+}
