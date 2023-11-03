@@ -10,9 +10,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 // creating a decorator
 // decorator function
 function Logger(logString) {
@@ -81,7 +78,6 @@ __decorate([
 ], Product.prototype, "prices", null);
 __decorate([
     log3,
-    __param(0, log4),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
@@ -100,7 +96,9 @@ function log2(target, propertyKey, descriptor) {
 }
 // decorators for methods
 function log3(target, propertyKey, descriptor) {
-    console.log('Method decorator!');
+    console.log("THIS IS WHAT i AM TESTING");
+    console.log('Method decorators!');
+    console.log("Here is the target below:");
     console.log(target);
     console.log(propertyKey);
     console.log(descriptor);

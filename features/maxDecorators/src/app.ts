@@ -65,7 +65,7 @@ class Product {
   }
 
   @log3
-  getPriceWithTax(@log4 tax: number) {
+  getPriceWithTax(tax: number) {
     return this.price * (1 + tax);
   }
 }
@@ -82,6 +82,7 @@ function log2(
   propertyKey: string,
   descriptor: PropertyDescriptor
 ) {
+  
   console.log('Accessor decorator!');
   console.log(target);
   console.log(propertyKey);
@@ -94,7 +95,9 @@ function log3(
   propertyKey: string,
   descriptor: PropertyDescriptor
 ) {
-  console.log('Method decorator!');
+  console.log("THIS IS WHAT i AM TESTING")
+  console.log('Method decorators!');
+  console.log("Here is the target below:")
   console.log(target);
   console.log(propertyKey);
   console.log(descriptor);

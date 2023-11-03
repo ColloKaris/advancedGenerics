@@ -1,21 +1,33 @@
-import 'reflect-metadata'
+import 'reflect-metadata';
 
-const plane = {
-  color: 'red'
-};
+@printMetadata
+class Plane {
+  color: string = 'red';
 
-// Metadata associated with a property
-Reflect.defineMetadata('note', 'hi there', plane, 'color')
+  @markFunction('HI THERE')
+  fly(): void {
+    console.log('vrrrrrr');
+  }
+}
 
-// Retriev metadata
-const note = Reflect.getMetadata('note', plane, 'color')
+// Decorator
+function markFunction(secretInfo: string) {
+  return function (target: Plane, key: string) {
+    Reflect.defineMetadata('secret', secretInfo, target, key);
+  };
+}
 
-
-// Define metadata
-// Reflect.defineMetadata('note', 'hi there', plane);
-// Reflect.defineMetadata('height', 10, plane);
-
-// // Retrieve metadata
-// const note = Reflect.getMetadata('note', plane)
-// const height = Reflect.getMetadata('height', plane)
- console.log(note);
+// A more effective way of retrieving information
+// since its a class constructor, we pass in a reference to its
+// constructor function
+function printMetadata(target: typeof Plane) {
+  // loop through all the different key's in the plane's prototype
+  // remember the prototype only stores methods
+  console.log("Hello Guys")
+  console.log(target.prototype)
+  for (let key in target.prototype) {
+    console.log("Hello World")
+    const secret = Reflect.getMetadata('secret', target.prototype, key);
+    console.log(secret);
+  }
+}
