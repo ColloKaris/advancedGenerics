@@ -6,7 +6,7 @@ class Plane {
 
   @markFunction('HI THERE')
   fly(): void {
-    console.log('vrrrrrr');
+    console.log('Vrrrrrr');
   }
 }
 
@@ -17,17 +17,12 @@ function markFunction(secretInfo: string) {
   };
 }
 
-// A more effective way of retrieving information
-// since its a class constructor, we pass in a reference to its
-// constructor function
-function printMetadata(target: typeof Plane) {
-  // loop through all the different key's in the plane's prototype
-  // remember the prototype only stores methods
-  console.log("Hello Guys")
-  console.log(target.prototype)
-  for (let key in target.prototype) {
-    console.log("Hello World")
-    const secret = Reflect.getMetadata('secret', target.prototype, key);
-    console.log(secret);
+function printMetadata(target: Function) {
+  // loop to go through all the different keys in the Plane prototype
+  for (let key of Object.getOwnPropertyNames(target.prototype).filter(name => name !== 'constructor')) {
+    if (typeof target.prototype[key] === 'function') {
+      const secret = Reflect.getMetadata('secret', target.prototype, key)
+      console.log(secret);
+    }    
   }
 }
